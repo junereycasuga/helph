@@ -90,4 +90,9 @@ class EvacuationCenters extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public static function getCenters()
+	{
+		return CHtml::listData(self::model()->findAll(), 'id', 'center_name');
+	}
 }

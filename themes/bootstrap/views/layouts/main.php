@@ -11,12 +11,6 @@
 </head>
 <body>
 	<?php $this->renderPartial('//layouts/header'); ?>
-	<?php if(Yii::app()->user->hasFlash('msg')): ?>
-		<div class="<?php echo Yii::app()->user->getFlash('msgClass'); ?>">
-			<button type="button" class="close" data-dismiss="alert">x</button>
-			<?php echo Yii::app()->user->getFlash('msg'); ?>
-		</div>
-	<?php endif; ?>
 	<div class="container">
 		<?php echo $content; ?>
 	</div>

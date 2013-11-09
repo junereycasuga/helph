@@ -7,16 +7,11 @@ class VictimsController extends Controller
 {
     public function actionIndex()
     {
-    	$model = new Victims();
+    	$model = new Victims;
+    	$victims = $model->findAll();
 
-    	$this->render('index', array(
-    		'model'=>$model));   
-    }
-
-    public function actionAddVictim(){
-    	if(isset($_POST['btn_add']) && isset($_POST['Victims'])){
-    		$model->attributes($_POST['Victims']);
-
+    	if(isset($_POST['Victims']) && isset($_POST['btn-add'])){
+    		$model->attributes = $_POST['Victims'];
     		if($model->validate() && $model->save()){
     			Yii::app()->user->setFlash('msg', 'Victim details successfully added');
     			Yii::app()->user->setFlash('msgClass','alert alert-success');
@@ -25,6 +20,10 @@ class VictimsController extends Controller
     			Yii::app()->user->setFlash('msgClass', 'alert alert-error');
     		}
     	}
+
+    	$this->render('index', array(
+    		'model'=>$model,
+    		'victims'=>$victims));   
     }
 
 	// -----------------------------------------------------------
