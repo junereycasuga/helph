@@ -95,4 +95,8 @@ class EvacuationCenters extends CActiveRecord
 	{
 		return CHtml::listData(self::model()->findAll(), 'id', 'center_name');
 	}
+
+	public static function getCenterName($id){
+		return self::model()->findByPk($id)->center_name;
+	}
 }

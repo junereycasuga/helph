@@ -1,7 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCpuVJQiLE2zdqA8tPnhjdN-3lmQvJyUQg&sensor=false">
+	</script>
+	<script>
+	function initialize()
+	{
+	var mapProp = {
+	  center:new google.maps.LatLng(51.508742,-0.120850),
+	  zoom:5,
+	  mapTypeId:google.maps.MapTypeId.ROADMAP
+	  };
+	var map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+	<meta charset="UTF-8" />
 	<?php
 	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/lib/css/bootstrap.css');
 	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/lib/css/bootstrap.min.css');

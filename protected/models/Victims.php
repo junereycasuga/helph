@@ -96,4 +96,18 @@ class Victims extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public static function getVictimStatus($id){
+		$status = self::model()->findByPk($id)->victim_status;
+
+		if($status == 0){
+			return 'Alive';
+		} else if($status == 1){
+			return 'Sick';
+		} else if($status == 2){
+			return 'Critical';
+		} else if($status == 3){
+			return 'Deceased';
+		}
+	}
 }

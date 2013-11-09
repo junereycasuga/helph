@@ -1,14 +1,6 @@
 <div class="row">
 	<div class="col-md-3">
 		<div class="well">
-			<!-- <form role="form">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search Victim Name" name="q">
-					<span class="input-group-btn">
-						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" type="button"></span></button>
-					</span>
-    			</div>
-			</form> -->
 			<h4>Add Victim</h4>
 			<hr>
 			<?php $form=$this->beginWidget('CActiveForm', array(
@@ -74,8 +66,8 @@
 						<td><?php echo $data['victim_name']; ?></td>
 						<td><?php echo $data['victim_age']; ?></td>
 						<td><?php echo $data['victim_description']; ?></td>
-						<td><?php echo $data['shelter_id']; ?></td>
-						<td><?php echo $data['victim_status']; ?></td>
+						<td><?php echo EvacuationCenters::getCenterName($data['shelter_id']); ?></td>
+						<td><?php echo Victims::getVictimStatus($data['id']); ?></td>
 					</tr>
 					<?php } ?>
 				</tbody>
