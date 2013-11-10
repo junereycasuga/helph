@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCpuVJQiLE2zdqA8tPnhjdN-3lmQvJyUQg&sensor=false">
-	</script>
+	<meta charset="UTF-8" />
+	<?php
+	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/lib/css/bootstrap.min.css');
+	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/lib/css/helph.css');
+	?>
+	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+</head>
+<body>
+	<?php $this->renderPartial('//layouts/header'); ?>
+	<?php if(Yii::app()->controller->id == 'site' && Yii::app()->controller->action->id == 'index'){ ?>
+	<div id="mapContainer">
+		<div id="googleMap"></div>
+	</div>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCpuVJQiLE2zdqA8tPnhjdN-3lmQvJyUQg&sensor=false"></script>
+
 	<script>
 	function initialize()
 	{
@@ -11,24 +24,16 @@
 	  zoom:5,
 	  mapTypeId:google.maps.MapTypeId.ROADMAP
 	  };
-	var map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+	var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
-	<meta charset="UTF-8" />
-	<?php
-	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/lib/css/bootstrap.css');
-	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/lib/css/bootstrap.min.css');
-	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/lib/css/helph.css');
-	?>
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-</head>
-<body>
-	<?php $this->renderPartial('//layouts/header'); ?>
+	<?php } else { ?>
 	<div class="container">
 		<?php echo $content; ?>
 	</div>
+	<?php } ?>
 
 	<?php
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/assets/js/jquery-1.10.2.min');
