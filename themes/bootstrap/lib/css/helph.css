@@ -9,8 +9,9 @@ html, body {
 }
 
 #mapContainer {
-	margin-top: 50px;
-	height: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 93%;
 	width: 100%;
 }
 
