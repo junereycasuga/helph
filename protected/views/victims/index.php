@@ -50,7 +50,7 @@
 			<h3>Victims</h3><hr>
 		</div>
 		<div class="row">
-			<table class="table table-bordered">
+			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -63,7 +63,7 @@
 				<tbody>
 					<?php foreach($victims as $data){ ?>
 					<tr>
-						<td><?php echo $data['victim_name']; ?></td>
+						<td><a href="<?php echo Yii::app()->createUrl('victim/view',array('id'=>$data['id'])); ?>"><?php echo $data['victim_name']; ?></a></td>
 						<td><?php echo $data['victim_age']; ?></td>
 						<td><?php echo $data['victim_description']; ?></td>
 						<td><?php echo EvacuationCenters::getCenterName($data['shelter_id']); ?></td>
